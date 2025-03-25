@@ -1,0 +1,10 @@
+<app-navbar [currentTab]="'products'"></app-navbar>
+<app-filter-overlay></app-filter-overlay>
+<div class="flex flex-row flex-wrap items-center justify-between">
+
+    @for(product of productPagination.productsInPage;track product.id){
+        <app-product-card [product]="product"/>
+    }
+</div>
+<app-pagination [currentPage]="this.productPagination.currentPage" [maxPages]="this.productPagination.totalPages" />
+

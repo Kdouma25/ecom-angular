@@ -1,0 +1,13 @@
+<div class="p-10 bg-gray-100 h-min m-10 rounded-2xl flex flex-col relative max-w-[350px]">
+    <img class="object-cover aspect-video object-center min-w-[250px] rounded-2xl  min-h-[300px]" [src]="product.imageUrl"/>
+    <div class="mt-6 font-bold">${{product.price}}</div>
+    <div class="">{{product.name}}</div>
+    <div class="absolute top-5 right-2 bg-gray-400  w-25 rounded-3xl flex flex-row justify-between pr-2 pl-2 opacity-70 pt-3 pb-3 items-center">
+        <lucide-angular [img]="star" />
+       <span class="">{{product.rating}}</span>
+    </div>
+    <div class="bg-black text-white flex p-4 mt-4 rounded-md active:bg-white active:text-red-950  hover:border-t-2 border-red-300 cursor-pointer">
+        <lucide-angular [img]="shoppingCart" />
+        <span class="w-full text-center">Add To Cart</span>
+    </div>
+</div>

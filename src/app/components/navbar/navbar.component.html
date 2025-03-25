@@ -1,0 +1,12 @@
+<div class="flex flex-row">
+    <img src="https://img.freepik.com/vecteurs-libre/logo-magasinage-rapide_1034-687.jpg?semt=ais_hybrid" width="65px"
+        height="65px" />
+    <div class="flex flex-row justify-around grow   bg-gray-200 h-min">
+        <p class="hover:bg-gray-500 hover:text-white active:bg-gray-600 flex-grow flex-1 p-3 text-center"
+            [ngClass]="{'text-white bg-gray-500 hover:bg-gray-500 active:hover:bg-gray-500 hover:text-black': currentTab === 'products'}">Products</p>
+        <p class="hover:bg-gray-500 hover:text-white active:bg-gray-600   flex-grow flex-1 p-3 text-center"
+            [ngClass]="{'text-white bg-gray-500 hover:bg-gray-500 active:hover:bg-gray-500 hover:text-black': currentTab === 'orders'}">Orders</p>
+        <p class="hover:bg-gray-500 hover:text-white active:bg-gray-600  flex-grow flex-1 p-3 text-center"
+            [ngClass]="{'text-white bg-gray-500 hover:bg-gray-500 active:hover:bg-gray-500 hover:text-black': currentTab === 'cart'}">My Cart</p>
+    </div>
+</div>
