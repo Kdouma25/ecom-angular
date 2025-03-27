@@ -1,17 +1,17 @@
 <div class="flex justify-center pb-20">
     <div class="flex bg-gray-700 space-x-7 w-fit pl-10 pr-10 pt-2 pb-2 rounded-4xl">
         <button class="h-full rounded-1xl border-white border-1 pr-2 pl-2"
-            [ngClass]="{'bg-amber-50 active:bg-amber-50 active:border-3':currentPage>1}"
+            [ngClass]="{'bg-amber-50 active:bg-amber-50 active:border-3':this.productService.productPageState().currentPage>1}"
             (click)="onPreviousClicked()">Previous</button>
-        @for(num of numbers;track num){
+        @for(num of paginationArray;track num){
         <button class="h-full rounded-2xl  pr-2 pl-2 hover:bg-amber-50" [ngClass]="{
-                'border-black border-2 bg-amber-50':num===currentPage ,
-                'active:border-black active:border-3':num !== currentPage
+                'border-black border-2 bg-amber-50':num===this.productService.productPageState().currentPage ,
+                'active:border-black active:border-3':num !== this.productService.productPageState().currentPage
             }" (click)="onButtonClick(num)">{{num}}</button>
         }
 
         <button class="h-full rounded-1xl border-white border-1 pr-2 pl-2"
-            [ngClass]="{'bg-amber-50 active:bg-amber-50 active:border-3':currentPage+1<=maxPages}"
+            [ngClass]="{'bg-amber-50 active:bg-amber-50 active:border-3':this.productService.productPageState().currentPage+1<=this.productService.productPageState().totalPages}"
             (click)="onNextClicked()">Next</button>
     </div>
 </div>

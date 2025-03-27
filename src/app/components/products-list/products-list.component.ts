@@ -7,7 +7,6 @@ import { ProductCardComponent } from "../product-card/product-card.component";
 import { PaginationComponent } from "../pagination/pagination.component";
 import { FilterOverlayComponent } from "../filter-overlay/filter-overlay.component";
 import { RouterOutlet } from '@angular/router';
-import { ProductPageState } from '../../models/states/productPageState';
 
 
 
@@ -25,29 +24,10 @@ export class ProductsListComponent {
 
 
 
-  /*  const currentProductPageStatus  = this._productPageState
-        const startEndIndexes = this.calculateStartAndIndexes(currentProductPageStatus().allProducts.length,currentProductPageStatus().currentPage)
-        const paginatedProducts = currentProductPageStatus().allProducts.slice(startEndIndexes[0],startEndIndexes[1])
-        
-        currentProductPageStatus.set({...currentProductPageStatus(),
-          paginatedProducts:paginatedProducts,
-          totalPages : Math.ceil(currentProductPageStatus().allProducts.length/currentProductPageStatus().paginationSize)})
-        
-          productPageState.set(currentProductPageStatus) */
-
-
   ngOnInit() : void{
-    console.log("product page init deetected . .. .")
     this.productService.init()
   }
 
-
-
-/*   calculateStartAndIndexes(productsSize: number, currentPage: number) {
-    const startIndex = Math.min(this.productService.PAGINATION_SIZE * (currentPage - 1), productsSize)
-    const endIndex = Math.min(startIndex + this.productService.PAGINATION_SIZE, productsSize)
-    return [startIndex, endIndex]
-  } */
 
 
 

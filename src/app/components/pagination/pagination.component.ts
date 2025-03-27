@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, computed, Input, signal } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ProductPageState } from '../../models/states/productPageState';
 
@@ -9,41 +9,37 @@ import { ProductPageState } from '../../models/states/productPageState';
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
+
 export class PaginationComponent {
-  @Input() maxPages! : number
-  @Input() currentPage! : number
-
-   numbers = Array()
-
-   constructor(public productService:ProductsService){
-    this.productPageState =  productService.productPageState()
+  
+  constructor(public productService:ProductsService){
+    
   }
 
-   productPageState! : ProductPageState
 
-  ngOnInit(){
-    this.numbers = Array.from({ length: this.maxPages }, (_, i) => 1 + i);
-    console.log(this.numbers)
-  }
 
 
 onButtonClick(numberOnButton : number){
-     if (this.currentPage != numberOnButton){
+     if (this.productService.productPageState().currentPage != numberOnButton){
        console.log("should switch to page ",numberOnButton);
-       this.productService.setCurrentPage(numberOnButton);
-       
+       this.productService.setCurrentPage(numberOnButton);  
      }
    } 
 
 
   onNextClicked(){
-    if (this.currentPage+1<=this.maxPages){
-      this.onButtonClick(this.currentPage+1)
+    if (this.productService.productPageState().currentPage+1<=this.productService.productPageState().totalPages){
+      this.onButtonClick(this.productService.productPageState().currentPage+1)
     }
   }
   onPreviousClicked(){
-    if (this.currentPage>1){
-      this.onButtonClick(this.currentPage-1)
+    if (this.productService.productPageState().currentPage>1){
+      this.onButtonClick(this.productService.productPageState().currentPage-1)
     }
+  }
+
+
+  get paginationArray() {
+    return Array.from({length: this.productService.productPageState().totalPages}, (_, i) => i + 1);
   }
 }
